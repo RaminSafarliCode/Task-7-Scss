@@ -1,0 +1,40 @@
+@import "../variables";
+@import "../mixins";
+
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: $main-color;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  @include flexBox(center, space-between);
+  padding: 8px 16px;
+  &__logo {
+    padding: 8px 16px;
+    &__link {
+      @include linkStyle();
+      letter-spacing: 4px;
+    }
+  }
+  &__nav {
+    &__list {
+      @include flexBox(center, space-between);
+      list-style-type: none;
+      &__list-item {
+        &__link {
+          @extend .header__logo__link;
+          padding: 8px 16px;
+        }
+        &__link:hover {
+          background-color: $hover-color;
+        }
+      }
+    }
+  }
+}
+
+@include under601Px() {
+  .header__nav {
+    display: none;
+  }
+}
